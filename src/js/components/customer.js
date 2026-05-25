@@ -55,12 +55,6 @@ export const CustomerComponent = {
               <button type="submit" class="btn btn-primary btn-block">
                 Sign In
               </button>
-
-              <div class="auth-tips" style="margin-top: 24px; padding: 16px; background-color: var(--primary-xlight); border-radius: var(--radius-sm); border: 1px dashed var(--primary-light); font-size: 0.8rem; color: var(--primary);">
-                💡 <strong>Demo Credentials:</strong><br>
-                - <strong>Customer:</strong> customer@farm.com (Password: user123)<br>
-                - <strong>Farmer Admin:</strong> admin@farm.com (Password: admin123)
-              </div>
             </form>
           ` : `
             <form id="auth-register-form">
