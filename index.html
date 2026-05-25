@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SG Farms | Fresh From Farm To Home</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="SG Farms delivers fresh, 100% organic crops directly from Mukkollu fields to your home in Andhra Pradesh. Order seasonal fruits, vegetables, and book farm visits today!">
+  <meta name="keywords" content="organic farming, crop delivery, direct from farm, SG Farms, buy mangoes, vegetables, farm visit booking, Mukkollu agriculture">
+  <meta name="author" content="SG Farms">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="./src/css/main.css">
+  <link rel="stylesheet" href="./src/css/modules.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Global Navigation Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="/" class="logo" id="nav-logo">
+        <span class="logo-icon">🌱</span>
+        <span class="logo-text">SG <span class="accent-text">Farms</span></span>
+      </a>
+      
+      <nav class="nav-menu" id="nav-menu">
+        <a href="/" class="nav-link active" data-link="home" id="nav-link-home">Home</a>
+        <a href="/catalog" class="nav-link" data-link="catalog" id="nav-link-catalog">Shop Crops</a>
+        <a href="/farm" class="nav-link" data-link="farm" id="nav-link-farm">Our Field Logs</a>
+        <a href="/blog" class="nav-link" data-link="blog" id="nav-link-blog">Farming Tips</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <button class="lang-btn" id="lang-menu-btn" title="Change Language">
+            <i data-lucide="globe"></i>
+            <span id="current-lang-code">EN</span>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-option" data-lang="en">English</button>
+            <button class="lang-option" data-lang="te">తెలుగు (Telugu)</button>
+            <button class="lang-option" data-lang="hi">हिन्दी (Hindi)</button>
+          </div>
+        </div>
+
+        <!-- Wishlist Link -->
+        <button class="nav-action-btn" id="wishlist-btn" title="Wishlist">
+          <i data-lucide="heart"></i>
+          <span class="badge badge-hidden" id="wishlist-count">0</span>
+        </button>
+
+        <!-- Shopping Cart Trigger -->
+        <button class="nav-action-btn" id="cart-trigger-btn" title="Shopping Cart">
+          <i data-lucide="shopping-bag"></i>
+          <span class="badge" id="cart-count">0</span>
+        </button>
+
+        <!-- User Profile/Login -->
+        <div class="user-menu" id="user-menu-container">
+          <!-- Dynamically Rendered: Login button or User Profile Dropdown -->
+        </div>
+
+        <!-- Mobile Menu Trigger -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Content Root -->
+  <main id="app-root">
+    <!-- Component content will inject here dynamically -->
+    <div class="app-loader">
+      <div class="spinner"></div>
+      <p>Cultivating your farm experience...</p>
+    </div>
+  </main>
+
+  <!-- Shopping Cart Drawer (Right Side overlay) -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Shopping Cart (<span id="cart-drawer-count">0</span>)</h3>
+      <button class="close-btn" id="cart-drawer-close">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="cart-drawer-body" id="cart-drawer-items">
+      <!-- Dynamic cart items will go here -->
+    </div>
+    <div class="cart-drawer-footer" id="cart-drawer-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <strong id="cart-subtotal">₹0.00</strong>
+      </div>
+      <div class="cart-summary-row delivery-row">
+        <span>Delivery (AP Area)</span>
+        <span class="free-delivery">FREE</span>
+      </div>
+      <button class="btn btn-primary btn-block" id="checkout-btn">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- AI Chatbot Helper (Floating Bottom-Right) -->
+  <div class="chatbot-container" id="chatbot-container">
+    <button class="chatbot-toggle-btn" id="chatbot-toggle" title="Chat with SG Farms Assistant">
+      <i data-lucide="message-circle" class="chat-open-icon"></i>
+      <i data-lucide="x" class="chat-close-icon hidden"></i>
+      <span class="chatbot-ping"></span>
+    </button>
+    
+    <div class="chatbot-panel hidden" id="chatbot-panel">
+      <div class="chatbot-header">
+        <div class="chatbot-avatar">🌾</div>
+        <div class="chatbot-info">
+          <h4>Farm Assistant</h4>
+          <span class="status-online">Online (SG Farms)</span>
+        </div>
+      </div>
+      <div class="chatbot-messages" id="chatbot-messages">
+        <!-- Welcoming chatbot message -->
+      </div>
+      <div class="chatbot-suggestions" id="chatbot-suggestions">
+        <!-- Sugggested query pills -->
+      </div>
+      <form class="chatbot-input-area" id="chatbot-form">
+        <input type="text" placeholder="Ask about organic crops, farm visits..." id="chatbot-input" required autocomplete="off">
+        <button type="submit" class="chat-send-btn" title="Send message">
+          <i data-lucide="send"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <a href="/" class="logo footer-logo">
+          <span>🌱</span> SG Farms
+        </a>
+        <p class="footer-desc">SG Farms brings fresh, high-quality, and 100% organic agricultural produce directly from our fertile fields in Mukkollu to your doorstep. Supporting local farmers, promoting health.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" class="social-link" title="YouTube"><i data-lucide="youtube"></i></a>
+          <a href="#" class="social-link" title="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="https://wa.me/919999999999" target="_blank" class="social-link whatsapp-footer" title="WhatsApp Support"><i data-lucide="phone-call"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="/catalog" class="footer-nav-link">Shop Fresh Crops</a></li>
+          <li><a href="/farm" class="footer-nav-link">Field Monitoring</a></li>
+          <li><a href="/blog" class="footer-nav-link">Agricultural Blogs</a></li>
+          <li><a href="/faq" class="footer-nav-link">Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Operations</h4>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-nav-link">Direct Delivery Areas</a></li>
+          <li><a href="#" class="footer-nav-link">Farm Visit Workshops</a></li>
+          <li><a href="#" class="footer-nav-link">Organic Standards</a></li>
+          <li><a href="#" class="footer-nav-link">Privacy & Delivery Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h4>SG Farms Location</h4>
+        <p class="contact-item">
+          <i data-lucide="map-pin"></i>
+          <span>Mukkollu Village, Andhra Pradesh, India</span>
+        </p>
+        <p class="contact-item">
+          <i data-lucide="mail"></i>
+          <a href="mailto:support@farm.com">support@farm.com</a>
+        </p>
+        <p class="contact-item">
+          <i data-lucide="phone"></i>
+          <a href="tel:+919999999999">+91 99999 99999</a>
+        </p>
+        <div class="delivery-badge">
+          <i data-lucide="truck"></i>
+          <span>Delivering across Andhra Pradesh</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container footer-bottom-flex">
+        <p>&copy; 2026 SG Farms. All rights reserved. Cultivated with care in Mukkollu.</p>
+        <div class="footer-badges">
+          <span class="badge-organic">100% Organic Certified</span>
+          <span class="badge-direct">Direct-From-Farmer</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Main Bundle -->
+  <script type="module" src="./src/js/app.js"></script>
+</body>
+</html>
